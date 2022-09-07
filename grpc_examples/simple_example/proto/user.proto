@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+// 指定生成的 go 文件存放位置及其包名
+option go_package = "./;proto";
+
+// 定义User rpc服务
+service User {
+  // 定义rpc服务的方法
+  rpc AddUser (UserRequest) returns (UserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+// 请求的结构体
+message UserRequest {
+  string name = 1;
+  uint32 age = 2;
+}
+
+// 响应的结构体
+message UserResponse {
+  string msg = 1;
+  int32 code = 2;
+}
+
+message GetUserRequest {
+  string name = 1;
+}
+
+message GetUserResponse {
+  string name = 1;
+  uint32 age = 2;
+}
